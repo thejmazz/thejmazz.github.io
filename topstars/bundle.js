@@ -54,7 +54,7 @@
 /******/ 	
 /******/ 	
 /******/ 	var hotApplyOnUpdate = true;
-/******/ 	var hotCurrentHash = "dc5b2837b7aa9c656bf1"; // eslint-disable-line no-unused-vars
+/******/ 	var hotCurrentHash = "736e0353adcd735d344d"; // eslint-disable-line no-unused-vars
 /******/ 	var hotCurrentModuleData = {};
 /******/ 	var hotCurrentParents = []; // eslint-disable-line no-unused-vars
 /******/ 	
@@ -78761,6 +78761,8 @@
 	
 	    var _this = _possibleConstructorReturn(this, Object.getPrototypeOf(SearchResults).call(this, props));
 	
+	    _initialiseProps.call(_this);
+	
 	    _this.state = {
 	      items: []
 	    };
@@ -78768,36 +78770,6 @@
 	  }
 	
 	  _createClass(SearchResults, [{
-	    key: 'fetchNewData',
-	    value: function fetchNewData(props) {
-	      var _this2 = this;
-	
-	      _asyncToGenerator(regeneratorRuntime.mark(function _callee() {
-	        var data;
-	        return regeneratorRuntime.wrap(function _callee$(_context) {
-	          while (1) {
-	            switch (_context.prev = _context.next) {
-	              case 0:
-	                _context.next = 2;
-	                return (0, _util.fetchJSON)(props.uri);
-	
-	              case 2:
-	                data = _context.sent;
-	
-	                console.log(data);
-	                _this2.setState({
-	                  items: data.items
-	                });
-	
-	              case 5:
-	              case 'end':
-	                return _context.stop();
-	            }
-	          }
-	        }, _callee, _this2);
-	      }))();
-	    }
-	  }, {
 	    key: 'componentWillMount',
 	    value: function componentWillMount() {
 	      this.fetchNewData(this.props);
@@ -78934,6 +78906,39 @@
 	//     )}
 	//   </TableBody>
 	// </Table>
+	
+	var _initialiseProps = function _initialiseProps() {
+	  this.fetchNewData = (function () {
+	    var ref = _asyncToGenerator(regeneratorRuntime.mark(function _callee(props) {
+	      var data;
+	      return regeneratorRuntime.wrap(function _callee$(_context) {
+	        while (1) {
+	          switch (_context.prev = _context.next) {
+	            case 0:
+	              _context.next = 2;
+	              return (0, _util.fetchJSON)(props.uri);
+	
+	            case 2:
+	              data = _context.sent;
+	
+	              console.log(data);
+	              this.setState({
+	                items: data.items
+	              });
+	
+	            case 5:
+	            case 'end':
+	              return _context.stop();
+	          }
+	        }
+	      }, _callee, this);
+	    }));
+	
+	    return function (_x) {
+	      return ref.apply(this, arguments);
+	    };
+	  })();
+	};
 	
 	exports.default = SearchResults;
 	
